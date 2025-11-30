@@ -1,4 +1,9 @@
+import React, { useState } from "react";
+import VolunteerSignup from "./VolunteerSignup";
+
 export default function Hero() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <section className="py-5 bg-light">
       <div className="container py-5">
@@ -11,8 +16,18 @@ export default function Hero() {
         <button className="btn btn-primary btn-lg me-2">
           Donate / Support
         </button>
-        <button className="btn btn-outline-secondary btn-lg">Volunteer</button>
+        <button
+          onClick={() => setShowForm(true)}
+          className="btn btn-outline-secondary btn-lg"
+        >
+          Volunteer
+        </button>
       </div>
+      {showForm && (
+        <div className="mt-4">
+          <VolunteerSignup />
+        </div>
+      )}
     </section>
   );
 }
